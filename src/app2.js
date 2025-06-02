@@ -3,7 +3,7 @@ import express from "express" // importando o express
 const app = express() // criando instância do express
 app.use(express.json()) // indicar para o express ler body da requisição com json
 
-// mock
+// mock para simular dados do BD
 const selecoes = [
     {id:1, selecao:'Brasil', grupo:'G'},
     {id:2, selecao:'Suiça', grupo:'G'},
