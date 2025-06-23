@@ -1,3 +1,4 @@
+import conexao from "../database/conexao.js"
 class SelecaoController{
 
     //Lista tudo
