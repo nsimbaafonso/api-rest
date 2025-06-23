@@ -1,9 +1,10 @@
-//const express = require("express") // importando o express
-import express from "express" // importando o express
-import conexao from "../infra/conexao.js" // importando a conexão com o bd
+import express from "express" 
+import conexao from "./app/database/conexao.js" 
+import SelecaoController from "./app/controllers/SelecaoController.js"
 
-const app = express() // criando instância do express
-app.use(express.json()) // indicar para o express ler body da requisição com json
+
+const app = express()
+app.use(express.json())
 
 // função que busca seleção por id
 function buscarSelecaoPorId(id) {
@@ -18,17 +19,7 @@ function buscarIndexSelecao(id) {
 //Rotas 
 
 //Lista seleções
-app.get("/selecoes", (req, res) => {
-    const sql = "SELECT * FROM selecoes"
-    conexao.query(sql, (error, result) => {
-        if (error) {
-            console.log("Ocorreu um erro: "+error)
-            res.status(404).json({"erro": error})
-        } else {
-            res.status(200).json(result)
-        }
-    })
-})
+app.get("/selecoes", SelecaoController.index)
 
 //Busca seleção por id
 app.get("/selecoes/:id", (req, res) => {
