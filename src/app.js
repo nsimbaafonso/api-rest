@@ -1,21 +1,12 @@
 import express from "express" 
-import SelecaoController from "./app/controllers/SelecaoController.js"
+import routes from "./routes.js"
 
 const app = express()
-app.use(express.json())
 
-//Rotas 
+app.use(express.json()) 
 
-//Lista seleções
-app.get("/selecoes", SelecaoController.index)
-//Busca seleção por id
-app.get("/selecoes/:id", SelecaoController.show)
-//Cadastra seleção
-app.post("/selecoes", SelecaoController.store)
-//Atualiza seleção
-app.put("/selecoes/:id", SelecaoController.update)
-//Elimina seleção
-app.delete("/selecoes/:id", SelecaoController.delete)
+//Usando o router
+app.use(routes)
 
 export default app
-//para rodar o projeto, vamos no terminal e digitamos: node src/app.js
+//para rodar o projeto, vamos no terminal e digitamos: npm run dev
